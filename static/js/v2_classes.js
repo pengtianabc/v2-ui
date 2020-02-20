@@ -561,7 +561,7 @@ class Inbound extends V2CommonClass {
         this.enable = true;
     }
 
-    genVmessLink(address='') {
+    genVmessLink(address='', proxy_address=[]) {
         if (this.protocol !== Protocols.VMESS) {
             return '';
         }
@@ -612,7 +612,20 @@ class Inbound extends V2CommonClass {
             path: path,
             tls: this.stream.security,
         };
-        return 'vmess://' + Inbound.base64(JSON.stringify(obj, null, 2));
+        let vmess_arr=[]
+        if (proxy_address && proxy_address.length){
+            for(var i=0; i < proxy_address.length; i++){
+                let o = JSON.parse(JSON.stringify(obj));
+                o.add = proxy_address[i]['address']
+                o.port = proxy_address[i]['port'] ? proxy_address[i]['port'] : port
+                if(proxy_address[i]['note'])
+                    o.ps += " " + proxy_address[i]['note']
+                vmess_arr.push('vmess://' + Inbound.base64(JSON.stringify(o, null, 2)))
+            }
+        }else{
+            vmess_arr.push('vmess://' + Inbound.base64(JSON.stringify(obj, null, 2)))
+        }
+        return vmess_arr.join("\r\n")
     }
 
     genSSLink(address='') {
@@ -621,10 +634,10 @@ class Inbound extends V2CommonClass {
             + '#' + encodeURIComponent(this.remark);
     }
 
-    genLink(address='') {
+    genLink(address='', proxy_address=[]) {
         switch (this.protocol) {
-            case Protocols.VMESS: return this.genVmessLink(address);
-            case Protocols.SHADOWSOCKS: return this.genSSLink(address);
+            case Protocols.VMESS: return this.genVmessLink(address, proxy_address);
+            case Protocols.SHADOWSOCKS: return this.genSSLink(address, proxy_address);
             default: return '';
         }
     }

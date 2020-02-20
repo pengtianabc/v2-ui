@@ -27,7 +27,35 @@ def accounts():
     from init import common_context
     inbs = Inbound.query.all()
     inbs = '[' + ','.join([json.dumps(inb.to_json(), ensure_ascii=False) for inb in inbs]) + ']'
-    return render_template('v2ray/accounts.html', **common_context, inbounds=inbs)
+    settings = {}
+    for x in config.all_settings():
+            settings[x.key] = x.value
+    if 'proxy_address' in settings:
+            proxy_address = []
+            if settings['proxy_address']:
+                for x in settings['proxy_address'].split(','):
+                    if not x.strip():
+                        continue
+                    lst = x.strip().split(':')
+                    obj = {}
+                    if len(lst) == 1:
+                        obj['address'] = lst[0].strip()
+                        obj['port'] = ''
+                    elif len(lst) == 2:
+                        obj['address'] = lst[0].strip()
+                        lst2 = lst[1].split("@", 1)
+                        if len(lst2) == 1:
+                            obj["port"] = lst2[0].strip()
+                        elif len(lst2) == 2:
+                            obj["port"] = lst2[0].strip()
+                            obj["note"] = lst2[1]
+                        else:
+                            continue
+                    else:
+                        continue
+                    proxy_address.append(obj)
+            settings['proxy_address'] = proxy_address
+    return render_template('v2ray/accounts.html', **common_context, inbounds=inbs, settings=json.dumps(settings))
 
 
 @v2ray_bp.route('/clients/', methods=['GET'])

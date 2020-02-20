@@ -8,14 +8,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-01-23 14:02+0800\n"
+"POT-Creation-Date: 2020-02-20 23:21+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.7.0\n"
+"Generated-By: Babel 2.8.0\n"
 
 #: init.py:95
 msgid "You has been logout, please refresh this page and login again"
@@ -83,7 +83,7 @@ msgid "days"
 msgstr ""
 
 #: templates/common/prompt_modal.html:3 templates/v2ray/accounts.html:39
-#: templates/v2ray/accounts.html:93 templates/v2ray/accounts.html:379
+#: templates/v2ray/accounts.html:93 templates/v2ray/accounts.html:383
 msgid "cancel"
 msgstr ""
 
@@ -100,11 +100,12 @@ msgstr ""
 msgid "close"
 msgstr ""
 
-#: templates/common/qrcode_modal.html:16 templates/common/text_modal.html:2
+#: templates/common/qrcode_modal.html:17 templates/common/text_modal.html:2
+#: templates/v2ray/donate.html:95
 msgid "copy"
 msgstr ""
 
-#: templates/common/qrcode_modal.html:26 templates/common/text_modal.html:31
+#: templates/common/qrcode_modal.html:32 templates/common/text_modal.html:31
 msgid "copied"
 msgstr ""
 
@@ -251,32 +252,32 @@ msgstr ""
 msgid "password auth"
 msgstr ""
 
-#: templates/v2ray/accounts.html:327
+#: templates/v2ray/accounts.html:331
 msgid "add account"
 msgstr ""
 
-#: templates/v2ray/accounts.html:328
+#: templates/v2ray/accounts.html:332
 msgid "add"
 msgstr ""
 
-#: templates/v2ray/accounts.html:337
+#: templates/v2ray/accounts.html:341
 msgid "update account"
 msgstr ""
 
-#: templates/v2ray/accounts.html:338 templates/v2ray/setting.html:37
-#: templates/v2ray/setting.html:203
+#: templates/v2ray/accounts.html:342 templates/v2ray/setting.html:37
+#: templates/v2ray/setting.html:207
 msgid "update"
 msgstr ""
 
-#: templates/v2ray/accounts.html:376
+#: templates/v2ray/accounts.html:380
 msgid "delete account"
 msgstr ""
 
-#: templates/v2ray/accounts.html:377
+#: templates/v2ray/accounts.html:381
 msgid "Cannot be restored after deletion, confirm deletion?"
 msgstr ""
 
-#: templates/v2ray/accounts.html:378
+#: templates/v2ray/accounts.html:382
 msgid "delete"
 msgstr ""
 
@@ -319,11 +320,11 @@ msgstr ""
 msgid "custom"
 msgstr ""
 
-#: templates/v2ray/donate.html:54 templates/v2ray/donate.html:62
+#: templates/v2ray/donate.html:56 templates/v2ray/donate.html:66
 msgid "show"
 msgstr ""
 
-#: templates/v2ray/donate.html:85
+#: templates/v2ray/donate.html:89
 msgid "please input a number"
 msgstr ""
 
@@ -481,7 +482,7 @@ msgid "status"
 msgstr ""
 
 #: templates/v2ray/index.html:65 templates/v2ray/index.html:197
-#: templates/v2ray/setting.html:189
+#: templates/v2ray/setting.html:193
 msgid "error"
 msgstr ""
 
@@ -672,57 +673,65 @@ msgstr ""
 msgid "Usually do not have to modify."
 msgstr ""
 
-#: templates/v2ray/setting.html:180
+#: templates/v2ray/setting.html:146
+msgid "real proxy address"
+msgstr ""
+
+#: templates/v2ray/setting.html:147
+msgid "format: ip:port@note,ip2:port2@note2"
+msgstr ""
+
+#: templates/v2ray/setting.html:184
 msgid "current panel version"
 msgstr ""
 
-#: templates/v2ray/setting.html:189
+#: templates/v2ray/setting.html:193
 msgid "not supported type"
 msgstr ""
 
-#: templates/v2ray/setting.html:226
+#: templates/v2ray/setting.html:230
 msgid "please input old username"
 msgstr ""
 
-#: templates/v2ray/setting.html:228
+#: templates/v2ray/setting.html:232
 msgid "please input old password"
 msgstr ""
 
-#: templates/v2ray/setting.html:230
+#: templates/v2ray/setting.html:234
 msgid "please input new username"
 msgstr ""
 
-#: templates/v2ray/setting.html:232
+#: templates/v2ray/setting.html:236
 msgid "please input new password"
 msgstr ""
 
-#: templates/v2ray/setting.html:251
+#: templates/v2ray/setting.html:255
 msgid "NOTICE"
 msgstr ""
 
-#: templates/v2ray/setting.html:253
+#: templates/v2ray/setting.html:257
 msgid ""
 "Most of the configuration items on this page are directly related to the "
 "survival of the panel and v2ray."
 msgstr ""
 
-#: templates/v2ray/setting.html:254
+#: templates/v2ray/setting.html:258
 msgid ""
 "Modifying the wrong value will cause the panel to fail to start, then you"
 " must reset all values."
 msgstr ""
 
-#: templates/v2ray/setting.html:255
+#: templates/v2ray/setting.html:259
 msgid ""
 "Please make a backup yourself. If the data is lost, I will not be "
 "responsible for it."
 msgstr ""
 
-#: templates/v2ray/setting.html:257
+#: templates/v2ray/setting.html:261
 msgid "understood"
 msgstr ""
 
-#: templates/v2ray/setting.html:258
+#: templates/v2ray/setting.html:262
 msgid "not remind"
 msgstr ""
 
@@ -730,30 +739,30 @@ msgstr ""
 msgid "blog"
 msgstr ""
 
-#: v2ray/router.py:69 v2ray/router.py:94
+#: v2ray/router.py:97 v2ray/router.py:122
 msgid "port exists"
 msgstr ""
 
-#: v2ray/router.py:81
+#: v2ray/router.py:109
 #, python-format
 msgid "Successfully added, will take effect within %(seconds)d seconds"
 msgstr ""
 
-#: v2ray/router.py:107
+#: v2ray/router.py:135
 #, python-format
 msgid "Successfully updated, will take effect within %(seconds)d seconds"
 msgstr ""
 
-#: v2ray/router.py:119
+#: v2ray/router.py:147
 #, python-format
 msgid "Successfully deleted, will take effect within %(seconds)d seconds"
 msgstr ""
 
-#: v2ray/router.py:128
+#: v2ray/router.py:156
 msgid "Reset traffic successfully"
 msgstr ""
 
-#: v2ray/router.py:135
+#: v2ray/router.py:163
 msgid "Reset add traffic successfully"
 msgstr ""
 

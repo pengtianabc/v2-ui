@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2020-01-23 14:02+0800\n"
+"POT-Creation-Date: 2020-02-20 23:21+0800\n"
 "PO-Revision-Date: 2019-08-14 14:37+0800\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: zh\n"
@@ -16,7 +16,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.7.0\n"
+"Generated-By: Babel 2.8.0\n"
 
 #: init.py:95
 msgid "You has been logout, please refresh this page and login again"
@@ -84,7 +84,7 @@ msgid "days"
 msgstr "天"
 
 #: templates/common/prompt_modal.html:3 templates/v2ray/accounts.html:39
-#: templates/v2ray/accounts.html:93 templates/v2ray/accounts.html:379
+#: templates/v2ray/accounts.html:93 templates/v2ray/accounts.html:383
 msgid "cancel"
 msgstr "取消"
 
@@ -101,11 +101,12 @@ msgstr "确定"
 msgid "close"
 msgstr "关闭"
 
-#: templates/common/qrcode_modal.html:16 templates/common/text_modal.html:2
+#: templates/common/qrcode_modal.html:17 templates/common/text_modal.html:2
+#: templates/v2ray/donate.html:95
 msgid "copy"
 msgstr "复制"
 
-#: templates/common/qrcode_modal.html:26 templates/common/text_modal.html:31
+#: templates/common/qrcode_modal.html:32 templates/common/text_modal.html:31
 msgid "copied"
 msgstr "复制成功"
 
@@ -252,32 +253,32 @@ msgstr "转发端口"
 msgid "password auth"
 msgstr "密码认证"
 
-#: templates/v2ray/accounts.html:327
+#: templates/v2ray/accounts.html:331
 msgid "add account"
 msgstr "添加账号"
 
-#: templates/v2ray/accounts.html:328
+#: templates/v2ray/accounts.html:332
 msgid "add"
 msgstr "添加"
 
-#: templates/v2ray/accounts.html:337
+#: templates/v2ray/accounts.html:341
 msgid "update account"
 msgstr "修改账号"
 
-#: templates/v2ray/accounts.html:338 templates/v2ray/setting.html:37
-#: templates/v2ray/setting.html:203
+#: templates/v2ray/accounts.html:342 templates/v2ray/setting.html:37
+#: templates/v2ray/setting.html:207
 msgid "update"
 msgstr "修改"
 
-#: templates/v2ray/accounts.html:376
+#: templates/v2ray/accounts.html:380
 msgid "delete account"
 msgstr "删除账号"
 
-#: templates/v2ray/accounts.html:377
+#: templates/v2ray/accounts.html:381
 msgid "Cannot be restored after deletion, confirm deletion?"
 msgstr "删除后不可恢复，确认删除？"
 
-#: templates/v2ray/accounts.html:378
+#: templates/v2ray/accounts.html:382
 msgid "delete"
 msgstr "删除"
 
@@ -320,11 +321,11 @@ msgstr "退出登录"
 msgid "custom"
 msgstr "自定义"
 
-#: templates/v2ray/donate.html:54 templates/v2ray/donate.html:62
+#: templates/v2ray/donate.html:56 templates/v2ray/donate.html:66
 msgid "show"
 msgstr "显示"
 
-#: templates/v2ray/donate.html:85
+#: templates/v2ray/donate.html:89
 msgid "please input a number"
 msgstr "请输入数字"
 
@@ -482,7 +483,7 @@ msgid "status"
 msgstr "状态"
 
 #: templates/v2ray/index.html:65 templates/v2ray/index.html:197
-#: templates/v2ray/setting.html:189
+#: templates/v2ray/setting.html:193
 msgid "error"
 msgstr "错误"
 
@@ -675,57 +676,65 @@ msgstr "v2ctl 命令位置"
 msgid "Usually do not have to modify."
 msgstr "通常不用修改。"
 
-#: templates/v2ray/setting.html:180
+#: templates/v2ray/setting.html:146
+msgid "real proxy address"
+msgstr "真实服务器地址"
+
+#: templates/v2ray/setting.html:147
+msgid "format: ip:port@note,ip2:port2@note2"
+msgstr "格式: ip:port@note,ip2:port2@note2"
+
+#: templates/v2ray/setting.html:184
 msgid "current panel version"
 msgstr "当前面板版本"
 
-#: templates/v2ray/setting.html:189
+#: templates/v2ray/setting.html:193
 msgid "not supported type"
 msgstr "不支持的类型"
 
-#: templates/v2ray/setting.html:226
+#: templates/v2ray/setting.html:230
 msgid "please input old username"
 msgstr "请输入原用户名"
 
-#: templates/v2ray/setting.html:228
+#: templates/v2ray/setting.html:232
 msgid "please input old password"
 msgstr "请输入原密码"
 
-#: templates/v2ray/setting.html:230
+#: templates/v2ray/setting.html:234
 msgid "please input new username"
 msgstr "请输入新用户名"
 
-#: templates/v2ray/setting.html:232
+#: templates/v2ray/setting.html:236
 msgid "please input new password"
 msgstr "请输入新密码"
 
-#: templates/v2ray/setting.html:251
+#: templates/v2ray/setting.html:255
 msgid "NOTICE"
 msgstr "用户须知"
 
-#: templates/v2ray/setting.html:253
+#: templates/v2ray/setting.html:257
 msgid ""
 "Most of the configuration items on this page are directly related to the "
 "survival of the panel and v2ray."
 msgstr "此页的大多数配置项都关乎面板与v2ray的存亡"
 
-#: templates/v2ray/setting.html:254
+#: templates/v2ray/setting.html:258
 msgid ""
 "Modifying the wrong value will cause the panel to fail to start, then you"
 " must reset all values."
 msgstr "修改不慎会导致面板无法启动，然后你必须要重置所有设置"
 
-#: templates/v2ray/setting.html:255
+#: templates/v2ray/setting.html:259
 msgid ""
 "Please make a backup yourself. If the data is lost, I will not be "
 "responsible for it."
 msgstr "请自行备份，造成数据丢失概不负责"
 
-#: templates/v2ray/setting.html:257
+#: templates/v2ray/setting.html:261
 msgid "understood"
 msgstr "我已明白"
 
-#: templates/v2ray/setting.html:258
+#: templates/v2ray/setting.html:262
 msgid "not remind"
 msgstr "不再提醒"
 
@@ -733,30 +742,30 @@ msgstr "不再提醒"
 msgid "blog"
 msgstr "博客"
 
-#: v2ray/router.py:69 v2ray/router.py:94
+#: v2ray/router.py:97 v2ray/router.py:122
 msgid "port exists"
 msgstr "端口已存在"
 
-#: v2ray/router.py:81
+#: v2ray/router.py:109
 #, python-format
 msgid "Successfully added, will take effect within %(seconds)d seconds"
 msgstr "添加成功，会在 %(seconds)d 秒内自动生效"
 
-#: v2ray/router.py:107
+#: v2ray/router.py:135
 #, python-format
 msgid "Successfully updated, will take effect within %(seconds)d seconds"
 msgstr "修改成功，会在 %(seconds)d 秒内自动生效"
 
-#: v2ray/router.py:119
+#: v2ray/router.py:147
 #, python-format
 msgid "Successfully deleted, will take effect within %(seconds)d seconds"
 msgstr "删除成功，会在 %(seconds)d 秒内自动生效"
 
-#: v2ray/router.py:128
+#: v2ray/router.py:156
 msgid "Reset traffic successfully"
 msgstr "重置流量成功"
 
-#: v2ray/router.py:135
+#: v2ray/router.py:163
 msgid "Reset add traffic successfully"
 msgstr "重置所有流量成功"
 

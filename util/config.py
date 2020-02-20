@@ -104,6 +104,10 @@ def get_v2ctl_cmd_path():
     return __get('v2ctl_cmd_path', '/usr/bin/v2ray/v2ctl')
 
 
+def get_proxy_address():
+    return __get('proxy_address', '')
+
+
 def get_secret_key():
     return __get('secret_key', os.urandom(24))
 
@@ -142,6 +146,7 @@ def init_db(update=False):
     add_if_not_exist(Setting('traffic_job_interval', 'traffic_job_interval', '30', 'int', '', True), update)
     add_if_not_exist(Setting('v2ctl_cmd_path', 'v2ctl_cmd_path', '/usr/bin/v2ray/v2ctl', 'text', '', True), update)
     add_if_not_exist(Setting('secret_key', '', os.urandom(24), 'text', '', True), False)
+    add_if_not_exist(Setting('proxy_address', 'proxy_address', '', 'text', '', False), update)
     db.session.commit()
 
 

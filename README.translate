@@ -1,0 +1,5 @@
+# https://www.jianshu.com/p/74a30e710141
+# pybabel extract -F babel.cfg -o messages.pot .
+# pybabel init -i messages.pot -d translations -l zh
+pybabel update -i messages.pot -d translations
+pybabel compile -d translations

@@ -58,7 +58,7 @@
                                           type="primary" icon="qrcode"
                                           @click="qrModal.show(
                                                     '{{ _('qrcode') }}',
-                                                    inbound.genLink(inbound.listen === '0.0.0.0' ? ip : inbound.listen),
+                                                    inbound.genLink(inbound.listen === '0.0.0.0' ? ip : inbound.listen, settings.proxy_address),
                                                     '{{ _('copy link') }}')"></a-button>
                                 <a-button icon="edit" @click="openEditInbound(inbound)"></a-button>
                                 <a-button style="float: right;" type="danger" icon="delete" @click="delInbound(inbound)"></a-button>
@@ -282,6 +282,7 @@
                 inbounds: [],
                 searchedInbounds: [],
                 searchKey: '',
+                settings: {},
             },
             methods: {
                 loading(spinning=true) {
@@ -309,6 +310,9 @@
                         return inb;
                     }).reverse();
                     this.searchInbounds(this.searchKey);
+                },
+                setSettings(settings){
+                    this.settings = settings;
                 },
                 searchInbounds(key) {
                     if (isEmpty(key)) {
@@ -413,6 +417,7 @@
                 }
             },
             mounted() {
+                this.setSettings({{ settings | safe }});
                 this.setInbounds({{ inbounds | safe }});
             },
             computed: {
