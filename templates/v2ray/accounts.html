@@ -23,6 +23,9 @@
                         <a-card hoverable style="margin-bottom: 20px;">
                             <div slot="title">
                                 <a-button type="primary" icon="plus" @click="openAddInbound"></a-button>
+                                <a-tooltip title="http(s)://IP:PORT/../subscribe/client-id">
+                                    <a-button type="primary" icon="reload" @click="uploadAllLink">{{ _('Update all subscribes') }}</a-button>
+                                </a-tooltip>
                             </div>
                             <a-row>
                                 <a-input v-model="searchKey" placeholder="{{ _('search') }}" autofocus></a-input>
@@ -61,6 +64,10 @@
                                                     inbound.genLink(inbound.listen === '0.0.0.0' ? ip : inbound.listen, settings.proxy_address),
                                                     '{{ _('copy link') }}')"></a-button>
                                 <a-button icon="edit" @click="openEditInbound(inbound)"></a-button>
+                                <a-button type="primary" icon="reload" @click="uploadLink(
+                                                    inbound, 
+                                                    inbound.genLink(inbound.listen === '0.0.0.0' ? ip : inbound.listen, settings.proxy_address)
+                                                    )"></a-button>
                                 <a-button style="float: right;" type="danger" icon="delete" @click="delInbound(inbound)"></a-button>
                             </div>
                             <div>
@@ -107,6 +114,10 @@
                                         <a-col :xs="24" :sm="24" :lg="12">
                                             id：
                                             <a-tag color="green">[[ inbound.settings.vmesses[0].id ]]</a-tag>
+                                            <a-tooltip :title="window.location.origin+'/subscribe/'+inbound.settings.vmesses[0].id">
+                                                <a-button type="primary" icon="copy" size="small" class="btn" :data-clipboard-text="window.location.origin+'/subscribe/'+inbound.settings.vmesses[0].id">
+                                                </a-button>
+                                            </a-tooltip>
                                         </a-col>
                                         <a-col :xs="24" :sm="24" :lg="12">
                                             {{ _('alter id') }}：
@@ -383,6 +394,18 @@
                         cancelText: '{{ _('cancel') }}',
                         onOk: () => this.submit('/v2ray/inbound/del/' + inbound.id)
                     });
+                },
+                uploadLink(inbound, link) {
+                    this.submit('/v2ray/inbound/update_link/' + inbound.settings.vmesses[0].id, {"link":link});
+                },
+                uploadAllLink(){
+                    for (var i = 0; i < this.inbounds.length; i++){
+                        let inbound = this.inbounds[i];
+                        this.uploadLink(
+                            inbound, 
+                            inbound.genLink(inbound.listen === '0.0.0.0' ? this.ip : inbound.listen, this.settings.proxy_address)
+                        )
+                    }
                 },
                 resetTraffic(inbound) {
                     this.submit('/v2ray/reset_traffic/' + inbound.id);

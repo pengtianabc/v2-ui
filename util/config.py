@@ -107,6 +107,31 @@ def get_v2ctl_cmd_path():
 def get_proxy_address():
     return __get('proxy_address', '')
 
+def convert_proxy_address(s):
+    proxy_address = []
+    if s:
+        for x in s.split(','):
+            if not x.strip():
+                continue
+            lst = x.strip().split(':')
+            obj = {}
+            if len(lst) == 1:
+                obj['address'] = lst[0].strip()
+                obj['port'] = ''
+            elif len(lst) == 2:
+                obj['address'] = lst[0].strip()
+                lst2 = lst[1].split("@", 1)
+                if len(lst2) == 1:
+                    obj["port"] = lst2[0].strip()
+                elif len(lst2) == 2:
+                    obj["port"] = lst2[0].strip()
+                    obj["note"] = lst2[1]
+                else:
+                    continue
+            else:
+                continue
+            proxy_address.append(obj)
+    return proxy_address
 
 def get_secret_key():
     return __get('secret_key', os.urandom(24))
@@ -115,6 +140,13 @@ def get_secret_key():
 def get_current_version():
     return '5.1.2'
 
+def prepare_link_dir():
+    DIR = "/etc/v2-ui/links"
+    if not os.path.exists(DIR):
+        code = os.system("mkdir %s -p"%DIR)
+        if code != 0:
+            return None
+    return DIR
 
 def add_if_not_exist(setting, update=False):
     if Setting.query.filter_by(key=setting.key).count() > 0:

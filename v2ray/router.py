@@ -30,31 +30,7 @@ def accounts():
     settings = {}
     for x in config.all_settings():
             settings[x.key] = x.value
-    if 'proxy_address' in settings:
-            proxy_address = []
-            if settings['proxy_address']:
-                for x in settings['proxy_address'].split(','):
-                    if not x.strip():
-                        continue
-                    lst = x.strip().split(':')
-                    obj = {}
-                    if len(lst) == 1:
-                        obj['address'] = lst[0].strip()
-                        obj['port'] = ''
-                    elif len(lst) == 2:
-                        obj['address'] = lst[0].strip()
-                        lst2 = lst[1].split("@", 1)
-                        if len(lst2) == 1:
-                            obj["port"] = lst2[0].strip()
-                        elif len(lst2) == 2:
-                            obj["port"] = lst2[0].strip()
-                            obj["note"] = lst2[1]
-                        else:
-                            continue
-                    else:
-                        continue
-                    proxy_address.append(obj)
-            settings['proxy_address'] = proxy_address
+    settings['proxy_address'] = config.convert_proxy_address(settings.get('proxy_address', ''))
     return render_template('v2ray/accounts.html', **common_context, inbounds=inbs, settings=json.dumps(settings))
 
 
@@ -136,6 +112,28 @@ def update_inbound(in_id):
             )
     )
 
+@v2ray_bp.route('inbound/update_link/<string:client_id>', methods=['POST'])
+def update_link(client_id):
+    # return "client_id:"+client_id
+    links = request.form['link']
+    if not links:
+        return jsonify(
+            Msg(False,
+                gettext(u'Links is empty, failed to update subscribe')
+                )
+        )
+    link_dir = config.prepare_link_dir()
+    if not link_dir:
+        return jsonify(
+            Msg(False,
+                gettext(u'Check link dir fail, failed to update subscribe')
+                )
+        )
+    with open("%s/%s"%(link_dir, client_id), 'w') as fd:
+        fd.write(links)
+    return jsonify(Msg(True,
+                gettext(u'Successfully updated subscribe!')
+                ))
 
 @v2ray_bp.route('inbound/del/<int:in_id>', methods=['POST'])
 @v2_config_change

@@ -4,9 +4,28 @@ from flask_babel import gettext
 from base.models import Msg, User
 from init import db
 from util import config, session_util
+import base64
 
 base_bp = Blueprint('base', __name__)
 
+
+def is_valid_cid(cid):
+    import re
+    return True if re.match("^[0-9A-Za-z_\-.]+$", cid) else False
+
+@base_bp.route('/subscribe/<string:client_id>', methods=['GET'])
+def subscribe(client_id):
+    if not is_valid_cid(client_id):
+        return ""
+    import os
+    link = config.prepare_link_dir()
+    link_file = "%s/%s"%(link, client_id)
+    if not link or not os.path.exists(link_file):
+        return ""
+    s = ''
+    with open(link_file, 'r') as fd:
+        s = fd.read()
+    return base64.encodebytes(s.encode()).decode().strip()
 
 @base_bp.route('/')
 def index():

@@ -27,6 +27,10 @@
     <script src="{{ base_path }}{{ url_for('static', filename='qs/qs.min.js') }}"></script>
     <script src="{{ base_path }}{{ url_for('static', filename='qrcode/qrious.min.js') }}"></script>
     <script src="{{ base_path }}{{ url_for('static', filename='clipboard/clipboard.min.js') }}"></script>
+    <script type="text/javascript">
+        let global_clip_board = new ClipboardJS(".btn")
+        global_clip_board.on('success', () => app.$message.success('{{ _('copied') }}'));
+    </script>
     <script src="{{ base_path }}{{ url_for('static', filename='js/util.js') }}?{{ cur_ver }}"></script>
     <script src="{{ base_path }}{{ url_for('static', filename='js/axios-init.js') }}?{{ cur_ver }}"></script>
     <script src="{{ base_path }}{{ url_for('static', filename='js/v2_classes.js') }}?{{ cur_ver }}"></script>
@@ -34,7 +38,7 @@
         const basePath = '{{ base_path }}';
         axios.defaults.baseURL = basePath;
         Vue.prototype.$message.config({
-            duration: 10,
+            duration: 3,
             maxCount: 5,
         });
 
