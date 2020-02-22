@@ -61,12 +61,12 @@
                                           type="primary" icon="qrcode"
                                           @click="qrModal.show(
                                                     '{{ _('qrcode') }}',
-                                                    inbound.genLink(inbound.listen === '0.0.0.0' ? ip : inbound.listen, settings.proxy_address),
+                                                    inbound.genLink(inbound.listen === '0.0.0.0' ? ip : inbound.listen, settings.proxy_address, settings.fake_url, settings.tls),
                                                     '{{ _('copy link') }}')"></a-button>
                                 <a-button icon="edit" @click="openEditInbound(inbound)"></a-button>
                                 <a-button type="primary" icon="reload" @click="uploadLink(
                                                     inbound, 
-                                                    inbound.genLink(inbound.listen === '0.0.0.0' ? ip : inbound.listen, settings.proxy_address)
+                                                    inbound.genLink(inbound.listen === '0.0.0.0' ? ip : inbound.listen, settings.proxy_address, settings.fake_url, settings.tls)
                                                     )"></a-button>
                                 <a-button style="float: right;" type="danger" icon="delete" @click="delInbound(inbound)"></a-button>
                             </div>
@@ -403,7 +403,7 @@
                         let inbound = this.inbounds[i];
                         this.uploadLink(
                             inbound, 
-                            inbound.genLink(inbound.listen === '0.0.0.0' ? this.ip : inbound.listen, this.settings.proxy_address)
+                            inbound.genLink(inbound.listen === '0.0.0.0' ? this.ip : inbound.listen, this.settings.proxy_address, this.settings.fake_url, this.settings.tls)
                         )
                     }
                 },

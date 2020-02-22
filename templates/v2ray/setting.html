@@ -146,6 +146,14 @@
                 name: '{{ _('real proxy address') }}',
                 tip: '{{ _('format: ip:port@note,ip2:port2@note2') }}', 
             },
+            fake_url: {
+                name: '{{ _('fake url') }}',
+                tip: '{{ _('same with v2ray') }}', 
+            },
+            tls: {
+                name: '{{ _('TLS') }}',
+                tip: '{{ _('global TLS switch: 0/1/on/off') }}', 
+            },
         };
 
         let app = new Vue({

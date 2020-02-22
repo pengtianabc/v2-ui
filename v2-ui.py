@@ -41,6 +41,7 @@ def main():
         'static_path': os.path.join(BASE_DIR, 'static'),
         'static_url_prefix': base_path + '/static/',
     }
+    print("Running with settings:%s"%settings)
     wsgi_app = wsgi.WSGIContainer(app)
     handlers = []
     if base_path:

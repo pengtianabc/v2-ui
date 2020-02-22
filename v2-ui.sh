@@ -92,7 +92,11 @@ before_show_menu() {
 }
 
 install() {
-    bash <(curl -Ls https://blog.sprov.xyz/v2-ui.sh)
+    if [ ! -e install.sh ]; then 
+        curl -Ls https://blog.sprov.xyz/v2-ui.sh > install.sh
+    fi
+    bash install.sh
+
     if [[ $? == 0 ]]; then
         if [[ $# == 0 ]]; then
             start

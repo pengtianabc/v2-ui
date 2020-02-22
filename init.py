@@ -1,5 +1,6 @@
 import logging
 import os
+import sys
 
 from flask import Flask, request, redirect, url_for, jsonify
 from flask_babel import Babel, gettext
@@ -8,6 +9,13 @@ from flask_sqlalchemy import SQLAlchemy
 from util import session_util, file_util
 from util.schedule_util import start_schedule
 
+def resource_path(relative_path):
+    if getattr(sys, 'frozen', False): #is Bundle Resource
+        base_path = sys._MEIPASS
+    else:
+        base_path = os.path.abspath(".")
+    return os.path.join(base_path, relative_path)
+# BASE_DIR = os.path.dirname(resource_path(__file__))
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 app = Flask(__name__)

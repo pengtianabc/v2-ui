@@ -1,0 +1,2 @@
+sh README.translate  && sh README.build  && bash install.sh && v2-ui restart
+

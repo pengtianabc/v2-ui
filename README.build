@@ -1,0 +1,8 @@
+# pip3 install pyinstaller
+pyinstaller  v2-ui.py --add-data static:static --add-data templates:templates --add-data translations:translations -y
+cp v2-ui.sh template_config.json v2-ui.service dist/v2-ui/ -f
+(cd dist/ && tar czf ../v2-ui.tgz v2-ui/)
+echo "Build over to v2-ui.tgz"
+echo -e "\033[32m 1. copy install.sh v2-ui.tgz to you pc \033[0m"  
+echo -e "\033[32m 2. run 'bash install.sh'\033[0m"  
+

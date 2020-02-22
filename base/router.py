@@ -25,7 +25,13 @@ def subscribe(client_id):
     s = ''
     with open(link_file, 'r') as fd:
         s = fd.read()
-    return base64.encodebytes(s.encode()).decode().strip()
+    show_type = request.args.get("type")
+    if show_type == "vmess":
+        return s
+    elif show_type == "base64_pure":
+        return base64.encodebytes(s.encode()).decode().strip().replace("\n", '')
+    return base64.encodebytes(s.encode()).decode().strip().replace("\n", '')
+    
 
 @base_bp.route('/')
 def index():
